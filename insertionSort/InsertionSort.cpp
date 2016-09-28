@@ -1,0 +1,48 @@
+#include "InsertionSort.h"
+
+int main(){
+	int n;
+	cin >> n;
+	int * list = new int[n];
+	int * copy = list;
+	for(int i = 0; i < n; i++){
+		cin >> list[i];
+	}
+	int * result = InsertionSort(list, n);
+	delete[] copy;
+	for(int i = 0; i < n; i++) {
+		cout << result[i] << endl;
+	}
+
+	return 0;
+}
+
+int * InsertionSort(int* list, int n){
+	int* result = new int[n];
+	result[0]=list[0];
+	int temp, size(1);
+	bool added;
+
+	for(int i = 1; i < n; i++){		
+		temp = list[i];
+		added = false;
+		for(int j = 0; j < size; j++){
+			if(temp < result[j]){
+				Insert(result, size, j, temp);
+				added = true;
+				break;
+			}
+		}
+		if(!added)
+			result[size]=temp;
+		size++;
+	}
+	return result;
+}
+
+void Insert(int* list, int size, int position, int element){
+	for(int i = size; i > position; i--){
+		list[i] = list[i-1];
+	}
+	list[position] = element;
+}
