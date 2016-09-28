@@ -13,10 +13,6 @@
 *.dylib
 *.dll
 
-# Temp files
-*.cpp~
-*.h~
-
 # Fortran module files
 *.mod
 *.smod
